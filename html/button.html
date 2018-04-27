@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>AUI快速完成布局</title>
+
+    <!-- <link rel="stylesheet" type="text/css" href="../css/aui.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" />
+
+    <!-- <link rel="stylesheet" type="text/css" href="../css/aui-zzy.css" /> -->
+    <style type="text/css">
+        button,
+        .aui-btn {
+            position: relative;
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 400;
+            font-family: inherit;
+            text-decoration: none;
+            text-align: center;
+            margin: 0;
+            background: #dddddd;
+            padding: 0 0.6rem;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            border-radius: 0.2rem;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            vertical-align: middle;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .aui-btn:active {
+            color: #212121;
+            background-color: #bdbdbd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="aui-btn " style="border-radius: 100px;
+              width: 100%;
+              height:2rem;
+             line-height: 2rem;
+              background-color: #666666;
+              color:#ffffff;
+              fontSize: 1rem" tapmode onclick="fsm()">
+        开 门
+    </div>
+
+
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/aui-range.js"></script>
+<script type="text/javascript" src="../script/APICloud-rest.js"></script>
+<script type="text/javascript" src="../script/SHA1.js"></script>
+<script type="text/javascript" src="../script/APICloud-rest-SHA1.js"></script>
+<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<!-- <script type="text/javascript" src="../script/doT.min.js"></script> -->
+<!-- <script type="text/javascript" src="../script/aui-dialog.js"></script> -->
+<!-- <script type="text/javascript" src="../script/aui-popup-new.js"></script> -->
+<!-- <script type="text/javascript" src="../script/aui-actionsheet.js"></script> -->
+<script type="text/javascript" src="../script/zzy.js"></script>
+<!-- <script type="text/javascript" src="../script/zepto.min.js"></script> -->
+<!-- <script type="text/javascript" src="../script/vue.min.js"></script> -->
+<script type="text/javascript" src="../script/zzyx.js"></script>
+<script type="text/javascript" src="../script/zzyclass.js"></script>
+<!-- <script type="text/javascript" src="../script/giz0.js"></script> -->
+<script type="text/javascript">
+    apiready = function() {
+        a = {
+
+        }
+        api.parseTapmode();
+
+        api.addEventListener({
+            name: 'addlock'
+        }, function(ret, err) {
+            // zzyalert('11',ret.value.key)
+            if (ret.value.key === '1') {
+                lopenb(ret.value.key)
+            }
+
+        });
+
+    }
+
+    function fsm() {
+
+
+        var FNScanner = api.require('FNScanner');
+        FNScanner.openScanner({
+            autorotation: true
+        }, function(ret, err) {
+            if (ret.content == "http://downloadpkg.apicloud.com/app/download?path=http://7z6ngg.com1.z0.glb.clouddn.com/5a07d62d75092b6eee9d95743f62ac05_d&ver=0.0.3&size=11.77M") {
+                zzysend('addlock', {
+                    'key': '1'
+                })
+            }
+        });
+      }
+
+
+    function lopenb(b) {
+        $.post("http://116.62.188.191:3000", {
+          b
+        }, function(data, status) {
+
+            alert("数据: " + data + "\n状态: " + status);
+        });
+    }
+
+    function lopenc(c) {
+        $.post("http://116.62.188.191:3000", {
+            ss
+        }, function(data, status) {
+
+            alert("数据: " + data + "\n状态: " + status);
+        });
+    }
+</script>
+
+</html>

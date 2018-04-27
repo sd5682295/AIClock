@@ -1,0 +1,1201 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+
+	<title>AUI快速完成布局</title>
+
+	<link rel="stylesheet" type="text/css" href="../css/aui-win.css" />
+
+
+</head>
+<style type="text/css">
+	.aui-bar {
+		margin-bottom: 15px;
+	}
+</style>
+
+<body>
+
+	<header class="aui-bar aui-bar-nav aui-bar-yin aui-text-default" style="padding-top:25px;	background-color: #ffffff">
+		<a class="aui-pull-left aui-text-default">
+			<span class="aui-iconfont aui-icon-left " style="color:#999999" tapmode onclick="fwleft()"></span>
+		</a>
+		<div class="aui-title" style="color:#333333">WLIST</div>
+		<a class="aui-pull-right aui-text-default">
+			<span class="aui-iconfont aui-icon-add1" style="color:#999999" tapmode onclick="ffwadd()"></span>
+		</a>
+	</header>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<!-- <script type="text/javascript" src="../script/aui-range.js"></script> -->
+<!-- <script type="text/javascript" src="../script/APICloud-rest.js"></script> -->
+<script type="text/javascript" src="../script/SHA1.js"></script>
+<script type="text/javascript" src="../script/APICloud-rest-SHA1.js"></script>
+<!-- <script type="text/javascript" src="../script/doT.min.js"></script> -->
+<script type="text/javascript" src="../script/aui-dialog.js"></script>
+<script type="text/javascript" src="../script/aui-popup-new.js"></script>
+<script type="text/javascript" src="../script/aui-actionsheet.js"></script>
+<!-- <script type="text/javascript" src="../script/vue.min.js"></script> -->
+<!-- <script type="text/javascript" src="../script/zzy.js"></script> -->
+<script type="text/javascript" src="../script/zzyx.js"></script>
+<!-- <script type="text/javascript" src="../script/001x.js"></script> -->
+<!-- <script type="text/javascript" src="../script/doctorx.js"></script> -->
+<!-- <script type="text/javascript" src="../script/doctorclass.js"></script> -->
+<!-- <script type="text/javascript" src="../script/zzyclass.js"></script> -->
+<!-- <script type="text/javascript" src="../script/001class.js"></script> -->
+<script type="text/javascript">
+	apiready = function() {
+		api.parseTapmode();
+		zzygetadd();
+		// zzytestad();
+		// zzygetidb();
+		zzyodel();
+
+api.addEventListener({
+    name: 'login_account'
+}, function(ret, err){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+
+api.addEventListener({
+    name: 'login_account_token'
+}, function(ret, err){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+
+
+api.addEventListener({
+    name: 'create_account'
+}, function(ret, err){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+
+api.addEventListener({
+    name: 'main_init'
+}, function(ret, err){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+
+api.addEventListener({
+    name: 'correlation_device'
+}, function(ret, err){
+    if( ret ){
+         alert( JSON.stringify( ret ) );
+    }else{
+         alert( JSON.stringify( err ) );
+    }
+});
+
+
+api.addEventListener({
+    name: 'main_path'
+}, function(ret, err){
+	if(ret.h = undefined){
+		openfrmyh(ret.name, 70, 'auto');
+	}else {
+		openfrmyh(ret.name, ret.h, 'auto');
+	}
+
+});
+
+
+
+
+		api.addEventListener({
+			name: 'start'
+		}, function(ret, err) {
+
+			zzygetsend('sdeviceId', "list", {
+				"deviceId": api.deviceId
+			})
+
+
+		});
+
+
+		api.addEventListener({
+			name: 'sdeviceId'
+		}, function(ret, err) {
+
+			// zzyalert('000',ret.value.key.length);
+			// zzyalert('aa',ret.value.key.length);
+			if (ret.value.key.length == 0) {
+				var zaa = {
+						'name': 'start',
+						'kind': 'n',
+						'no': api.deviceId,
+						'deviceId': api.deviceId
+					}
+					// bsave(zza, aaobj);
+
+				// zzyalert('aa',aaobj)
+
+				// zzysend('start');
+				zzysave('start', 'list', zaa)
+
+
+			} else {
+				aaobj = ret.value.key;
+				// zzyalert('aaobj',aaobj);
+				var aolen = aaobj.length
+				for (var i = 0; i < aolen; i++) {
+					if (aaobj[i].no == api.deviceId) {
+						ftdata = aaobj[i]
+							// zzyalert('ftdata',ftdata)
+					}
+				}
+				// ftdata = aaobj[0];
+				// zzyalert('555',aaobj);
+				// ftpop = aaobj[1];
+				// listobj.push("aa");
+				// zzyalert('fclick',ret);
+				zzysend('fclick', ftdata);
+			};
+			// zzyalert('ret',ret)
+
+
+
+
+		});
+
+
+		api.addEventListener({
+			name: 'bb'
+		}, function(ret, err) {
+
+
+
+			oopenfrmyh('sFrm', 70, 'auto');
+			oopenfrmyh('mFrm', 115, 'auto')
+
+		});
+
+
+
+		api.addEventListener({
+				name: 'listm'
+			}, function(ret, err) {
+
+				// zzyalert("999", listobj);
+				if (ret.value == "sig") {
+					// zzyalert('sig',mpsd);
+					zzysend('fmsig', mpsd.length);
+					fzzylist = "sig"
+
+					zzyvonlistsend('sig', '#lfsig', {
+						mpsw: mpsd,
+					});
+				} else if (ret.value == "zzylistm") {
+					fzzylist = "m"
+						// zzyalert('fml', ftdata);
+					zzyvonlistsend('zvls', '#listTemp', {
+						fcts: fct,
+						// fmsg: ftdata,
+						msgs: listobj,
+						fwadd: fwadd
+					});
+					zzysend('zv', ftdata);
+				} else if (ret.value == "lflock") {
+					fzzylist = "flock";
+					zzyalert('aac');
+					oopenfrm('button', '120px', "550px", "120px", "40px");
+				}
+
+
+
+
+			}
+
+		);
+
+
+
+
+
+
+
+		api.addEventListener({
+			name: 'finput'
+		}, function(ret, err) {
+			// zzyalert('222', ret)
+			ftdata.dvalue = ret.value.dvalue;
+			ftdata.data = ret.value.data;
+			zzysend('fclick', ftdata);
+			zzysaveid('adgetout', "list", ftdata.id, {
+				"dvalue": ret.value.dvalue,
+				"data": ret.value.data
+			})
+		});
+
+
+		api.addEventListener({
+			name: 'openwebfrm'
+		}, function(ret, err) {
+			fopenwebsend('ofwebtest', ftdata.data, 140, 470)
+		});
+
+
+
+		//路由、刷新页面
+		//ftdata 现在打开数据项
+		//ftdata.matter 数据项属性（路由功能）
+		api.addEventListener({
+			name: 'fclick'
+		}, function(ret, err) {
+			// zzyalert("666", ftdata);
+			// zzyalert("777", aaobj[0]);
+			ftdata = ret.value;
+
+
+			getlist(aaobj, ftdata.no, listobj);
+			// zzysend('bb')
+
+			if (ftdata.matter == undefined) {
+				// zzyalert('11',listobj)
+				zzysend('bb');
+			} else if (ftdata.matter.indexOf("lf") == -1) {
+				// zzyalert('22')
+				zzysend('bb', listobj);
+			} else if (ftdata.matter == 'lfplay') {
+				oopenfrmyh('play1', 115, 'auto');
+				oopenfrm('lfplay', '150px', '500px', '100px', '100px');
+
+			} else {
+				oopenfrmyh(ftdata.matter, 115, 'auto');
+			}
+
+
+
+		});
+
+
+
+
+
+
+
+		//添加项
+
+		api.addEventListener({
+			name: 'write'
+		}, function(ret, err) {
+			if (fzzylist == "m") {
+				var cobj = {};
+				var ono = {};
+				fsha1(Math.random() + Date.now(), ono);
+
+				// var aalen = aaobj.length
+				// for (var i = 0; i < aalen; i++) {
+				// 	if (aaobj[i].no == i) {} else {
+				// 		fno.push(i)
+				// 	}
+				//
+				// };
+
+
+
+				cobj = {
+					"name": ret.value.key,
+
+					"no": ono.name,
+					// "nbr": "n",
+					// "sonn": "n",
+					"kind": ftdata.no,
+					"deviceId": api.deviceId,
+
+				}
+				aaobj.push(cobj);
+				// listobj.push(cobj);
+				zzysend('fclick', ftdata);
+				// zzyalert('cobj',cobj);
+				zzysave('wsave', 'list', cobj);
+			} else if (fzzylist == "sig") {
+				fsigno = ret.value.key;
+				alert("设置为" + fsigno + "位密码")
+					//可以转换成发送数据
+			}
+
+		})
+
+
+
+
+
+
+
+		//右划动作监听2，暂未使用
+		api.addEventListener({
+				name: 'sr'
+			}, function(ret, err) {
+				fbringFrameToFront('mFrm');
+
+				if (test2 < 2) {
+					var st = test2;
+					test2 = st + 1
+				} else {
+					//  zzyalert('666');
+					test2 = 0;
+					zzysend('ssa')
+				}
+
+			}
+
+		);
+		////////////////////////////////////////////
+
+		api.addEventListener({
+			name: 'oreturn'
+		}, function(ret, err) {
+			if (ftdata.kind == 'n') {
+				alert('已经是根目录了，无法返回');
+			} else {
+				var aolen = aaobj.length
+				for (var i = 0; i < aolen; i++) {
+					// zzyalert('ftdata',aaobj[i]);
+					if (aaobj[i].no == ftdata.kind) {
+						ftdata = aaobj[i];
+					}
+				}
+				zzysend('fclick', ftdata);
+			}
+		});
+
+
+		//////右划触发监听1/////////////////////////////////////////////////
+
+		api.addEventListener({
+			name: 'swiperight'
+		}, function(ret, err) {
+			zzysend('sr');
+		});
+
+
+
+		////////删除项目栏////////////////////////////////////////
+
+		api.addEventListener({
+			name: 'fclose'
+		}, function(ret, err) {
+
+			// zzyalert('fclose',ret)
+			var ffno = bgetno(aaobj, ret.value.id)
+				// // zzyalert('ffno',ffno);
+			aaobj.splice(ffno, 1);
+
+
+			zzysend('fclick', ftdata);
+			zzygetsend('odel', "list", {
+				no: ret.value.no,
+				deviceId: api.deviceId
+			});
+
+
+		})
+
+		//触点监听暂未使用///////////////////////////////////////////////////////
+		api.addEventListener({
+			name: 'tm3'
+		}, function(ret, err) {
+
+
+
+
+			var xx = ret.value.xr;
+			var yy = ret.value.yr - 1;
+
+			var direction = ret.value.direction;
+			var distance = ret.value.distance;
+
+
+			if (xx > 290 && xx < 320) {
+				//  zzysend('menu');
+				if (direction == "up") {
+					var yy1 = sequence[yy];
+					//  zzyalert("22", sequence);
+					sequence[yy] = sequence[yy - 1];
+					//  zzyalert("33", sequence);
+					sequence[yy - 1] = yy1;
+					//  zzyalert("44", sequence);
+
+					//zzyalert("333", sequence);
+
+
+					zzysaveid('kkkkkk', "list", fclick, {
+							"pro": sequence
+						})
+						//  zzyalert("write", listobj);
+					zzygetsend('getout', "list", {
+						"kind": fclick,
+						"deviceId": deviceId
+					})
+
+				} else if (direction == "down") {
+					var yy2 = sequence[yy];
+					//  zzyalert("22", sequence);
+					sequence[yy] = sequence[yy + 1];
+					//  zzyalert("33", sequence);
+					sequence[yy + 1] = yy2;
+					//  zzyalert("44", sequence);
+
+					//    zzyalert("333", fclick);
+
+
+					zzysaveid('kkk', "list", fclick, {
+							"pro": sequence
+						})
+						//  zzyalert("write", listobj);
+					zzygetsend('getout', "list", {
+						"kind": fclick,
+						"deviceId": deviceId
+					})
+				}
+
+			} else {
+				if (direction == "right") {
+					zzysend('sr')
+				}
+			}
+
+		});
+
+		////////////////////////////////////////////////////
+
+		// 弹出选择栏暂未使用
+		api.addEventListener({
+				name: 'fmenustep0'
+			}, function(ret, err) {
+
+				fmenu = ret.value;
+
+				zzydialogsend('fdialog', '赋值', '值或属性')
+
+			}
+
+		);
+		//弹出栏监听2暂未使用
+
+		api.addEventListener({
+			name: 'fdialog'
+		}, function(ret, err) {
+			if (ret.value.buttonIndex == 2) {
+				var aolen = aaobj.length
+				for (var i = 0; i < aolen; i++) {
+					if (aaobj[i].no == fmenu.no) {
+						aaobj[i].matter = ret.value.text
+					}
+				}
+
+			} else {};
+			zzysend('fclick', ftdata);
+			zzysaveid('ssa', 'list', fmenu.id, {
+				"matter": ret.value.text
+			})
+
+		});
+
+		//弹出栏监听3暂未使用
+		api.addEventListener({
+			name: 'sdialog'
+		}, function(ret, err) {
+			zzyalert('222')
+			if (ret.value.buttonIndex == 2) {
+				zzyalert('您输入的是', ret)
+				zzysaveid('sdialog2', 'list', caa.id, {
+					"dvalue": ret.value.text
+				})
+			}
+
+		});
+
+
+
+
+
+
+		//----------------------------------------------------------------------
+
+
+
+		// 触点监听2暂未使用
+
+		api.addEventListener({
+			name: 'tm'
+		}, function(ret, err) {
+			//  zzyalert('tm', ret)
+			//zzytestsend('of','tm3',2,ret.value)
+			if (test < 1) {
+				var sr0 = test;
+				test = sr0 + 1;
+			} else {
+				test = 0;
+				zzysend('tm3', ret.value);
+			}
+
+
+
+
+		});
+
+		// ==================================================================================================================
+		//                 模块名称：GPS
+		//                     功能：
+		//                        1、获取GPS位置
+		//                        2、获取经纬度差换算成距离
+		//                        3、根据距离测算时速
+		//===================================================================================================================
+
+
+		api.addEventListener({
+			name: 'fspd100'
+		}, function(ret, err) {
+			// zzyalert('fspd100', fspgps);
+			zzysetzoomsend(ret.value);
+			fsetrectsend(500);
+		});
+
+
+		api.addEventListener({
+			name: 'latstate'
+		}, function(ret, err) {
+
+			ftimen2 = (new  Date()).valueOf();
+
+			if (ret.value.value.state == true) {
+				if (lac > 5 && lac < 8 && lasp < 15) {
+					zzysend('frescue');
+				} else if (lac > 15 && lasp < 15) {
+					zzysend('help');
+				};
+				if (lasp > 8) {
+					if (f1time0 == 0) {
+						// zzyalert('a80');
+						f1time0 = (new  Date()).valueOf();
+						f2time0 = 0;
+						f3time0 = 0;
+					} else if (f1time0 == 999) {} else if (Math.abs((new  Date()).valueOf() - f1time0) > 500) {
+						// zzyalert('a81');
+						f1time0 = 999;
+						zzysend('fspd100', 18);
+						//  zzysetzoomsend(18);
+
+					}
+
+				} else if (lasp <= 8 && lasp > 2) {
+					if (f1time0 == 0) {
+						// zzyalert('a20');
+						f1time0 = (new  Date()).valueOf();
+						f2time0 = 0;
+						f3time0 = 0;
+					} else if (f1time0 == 999) {} else if (Math.abs((new  Date()).valueOf() - f1time0) > 500) {
+						// zzyalert('a21');
+						f1time0 = 999;
+						zzysend('fspd100', 20);
+						//  zzysetzoomsend(20)
+					}
+
+
+
+				} else {
+					if (f1time0 == 0) {
+						// zzyalert('a00');
+						f1time0 = (new  Date()).valueOf();;
+						f2time0 = 0;
+						f3time0 = 0;
+					} else if (f1time0 == 999) {} else if (Math.abs((new  Date()).valueOf() - f1time0) > 500) {
+						// zzyalert('a01');
+						f1time0 = 999;
+						zzysend('fspd100', 14);
+						//  zzysetzoomsend(14)
+					}
+
+				}
+			} else {
+				latstate = 1
+			}
+		});
+
+		api.addEventListener({
+			name: 'gpssignal'
+		}, function(ret, err) {
+			if (latstate == 1) {
+
+				if (fspgps > 8) {
+					if (f1time0 == 0) {
+						// zzyalert('b80');
+						f1time0 = (new  Date()).valueOf();
+						f2time0 = 0;
+						f3time0 = 0;
+					} else if (f1time0 == 999) {} else if (Math.abs((new  Date()).valueOf() - f1time0) > 500) {
+						// zzyalert('b81');
+						f1time0 = 999;
+						zzysend('fspd100', 18);
+						// zzyalert('bg', 18);
+						// zzysetzoomsend(18)
+					}
+
+				} else if (fspgps <= 8 && fspgps > 2) {
+					if (f1time0 == 0) {
+						// zzyalert('b20');
+						f1time0 = (new  Date()).valueOf();
+						f2time0 = 0;
+						f3time0 = 0;
+					} else if (f1time0 == 999) {} else if (Math.abs((new  Date()).valueOf() - f1time0) > 500) {
+						// zzyalert('b21');
+						f1time0 = 999;
+						zzysend('fspd100', 20);
+						// zzysetzoomsend(20);
+						// zzyalert('bg', 20);
+					}
+
+
+
+				} else {
+					// zzyalert('666',(new  Date()).valueOf());
+					if (f1time0 == 0) {
+						// zzyalert('b00');
+						f1time0 = (new  Date()).valueOf();
+						f2time0 = 0;
+						f3time0 = 0;
+					} else if (f1time0 == 999) {} else if (Math.abs((new  Date()).valueOf() - f1time0) > 500) {
+						// zzyalert('b01');
+						f1time0 = 999;
+						// zzyalert('bg', 14);
+						zzysend('fspd100', 14);
+						// zzysetzoomsend(14)
+					}
+
+				}
+			}
+
+
+
+
+		});
+		api.addEventListener({
+			name: 'fwadd'
+		}, function(ret, err) {
+			zzyalert('fwaddd1', fwadd)
+			if (fwadd == false) {
+				fwadd = true
+			} else {
+				fwadd = false
+			};
+
+			zzysend('fclick', ftdata);
+		});
+
+		api.addEventListener({
+			name: 'savelocation0'
+		}, function(ret, err) {
+			zzyalert('11');
+			zzysend('ilocation', ret.value);
+			if (locations == 0) {
+				locations = 1
+			} else if (locations == 1) {
+				locations = 0;
+				zzysend('savelocation', ret.value)
+			}
+
+		});
+
+
+
+
+
+		// api.addEventListener({
+		// 	name: 'bgetlocations'
+		// }, function(ret, err) {
+		//
+		// 	bgetlocation('savelocation0', '10m', false, 1)
+		// });
+		//
+		// // ------------------------------------------------------------------------------------------------------------------
+		//
+		// api.addEventListener({
+		// 	name: 'bgetlocklocation'
+		// }, function(ret, err) {
+		// 	bgetlocation('ilocation', false)
+		// });
+
+
+		// api.addEventListener({
+		// 	name: 'savelocation'
+		// }, function(ret, err) {
+		//
+		// 	if (fspgps > 3) {
+		// 		fsetcenter(ret.value.lon, ret.value.lat)
+		// 	};
+		// 	var latimen1 = (new  Date()).valueOf();
+		// 	//  zzysave('gpssignal1', 'gps', {"time":latimen1})    ;
+		// 	zzysend('gpssignal', ret);
+		//
+		// 	if (sso == [0]) {
+		// 		sso.length = 0;
+		// 		sso[0] = {
+		// 			"time": latimen1,
+		// 			"lon": ret.value.lon,
+		// 			"lat": ret.value.lat
+		// 		}
+		// 	} else if (sso.length == 1) {
+		// 		sso[1] = {
+		// 			"time": latimen1,
+		// 			"lon": ret.value.lon,
+		// 			"lat": ret.value.lat
+		// 		};
+		// 		//  lon.push(ss[1]-ss[0])
+		// 	} else {
+		// 		sso.push({
+		// 			"time": latimen1,
+		// 			"lon": ret.value.lon,
+		// 			"lat": ret.value.lat
+		// 		});
+		// 		sso.splice(0, 1);
+		// 		var ffmth = new fmath();
+		// 		ffmth.pdisdance(sso[0].lat, sso[0].lon, sso[1].lat, sso[1].lon);;
+		// 		fgpstime = Math.abs(sso[0].time - sso[1].time);
+		// 		// zzyalert("sso",sso);
+		// 		// zzyalert('1',ffmth);
+		// 		fspgps = ffmth.ffmth / fgpstime * 1000 * 3600;
+		//
+		// 		// zzyalert('speed', fspgps);
+		//
+		// 	};
+		//
+		//
+		// })
+
+		//===================================================================================================================
+
+		api.addEventListener({
+			name: 'sss'
+		}, function(ret, err) {
+
+			zzysend('latstate', ret);
+			latimen.push((new  Date()).valueOf());
+			if (latimen.length == 2) {
+				latimenx = latimen[1] - latimen[0];
+				latimen.splice(0, 1);
+			} else {
+				latimen = 1
+			};
+
+			var acxd
+			var acyd
+			var aczd
+			acxd += ret.value.x;
+			acyd += ret.value.y;
+			aczd += ret.value.z;
+			// var latimed = (new Date()).valueOf();
+			// acxx;
+			// 	var acys = acyx;
+			// 	var aczs = aczx;
+			// 	// var latimes = latimex
+			// 	acxx = acxs + acxd;
+			// 	acyx = acys + acyd;
+			// 	aczx = aczs + aczd;
+			// latimedd = latimex - latime0;
+			// if (latimedd == 0) {
+			// 	latimedd = 1
+			// };
+			// lac = Math.sqrt(Math.pow(acxd, 2), Math.pow(acyd, 2), Math.pow(aczd, 2));
+
+
+
+			ladistance = Math.sqrt(Math.pow(acxd, 2), Math.pow(acyd, 2), Math.pow(aczd, 2));
+			lasp = ladistance / latimenx * 3600;
+
+
+		});
+
+		api.addEventListener({
+			name: 'oms'
+		}, function(ret, err) {
+			fshowlocation()
+		});
+
+
+		api.addEventListener({
+			name: 'dop'
+		}, function(ret, err) {
+
+			if (fstsignal == 0) {
+				zzyvonlistsend('dzvls', '#fst', {
+
+					msg: {
+						"name": "首页"
+					}
+				})
+			} else {
+				zzyvonlistsend('dzvls', '#fst', {
+
+					msg: {
+						"name": "道路救援"
+					}
+				})
+			}
+
+		});
+
+		// 		api.addEventListener({
+		// 		    name: 'ppl2'
+		// 		}, function(ret, err){
+		// 			zzyalert('111',pplen);
+		// pplen = (pp.length-1);
+		// 		  if(pplen<144){pp=pp+pp.substr(parseInt(pp.substr(0, 1), 36)),parseInt(pp.substr((0, 2), 36)+1);
+		// 		  zzysend('ppl2')
+		//
+		//
+		// 		}else{
+		// 		  if(parseInt(pp.substr(jj, 1), 36)<pplen){
+		// 		    s[ii]=pp.substr((jj+1),(parseInt(pp.substr(jj, 1), 36)+1));
+		// 				jj+=(parseInt(pp.substr(jj, 1), 36)+1);
+		// 		    pplen-= jj
+		// 		  ii+=1;
+		// 		  // zzyalert('2',s)
+		// 		  zzysend('ppl2')
+		// 		}else{
+		// 		  s[ii]=pp.substring(jj, pplen);
+		// 			(function(){
+		// 				var slen = s.length;
+		//
+		// 				for (var i = 0 ;i<slen;i++){
+		// 					fmd5(s[i],sss);
+		// 					// zzyalert('sss',sss.name);
+		// 					// if(mpsd == "PASSWORD"){mpsd = sss.name}else{mpsd=mpsd+sss.name}
+		// 					if(i = 0){pp=sss.name}else{pp = pp+sss.name}
+		// 				}
+		// 			})();
+		//
+		// 		mpsd = s;
+		// 	zzysend('fclick',ftdata)
+		//
+		// 		}
+		//
+		// 		}
+		// 		});
+		// 		//=============================================================================
+
+
+
+
+
+
+		//===================================================================================================
+
+		api.addEventListener({
+			name: 'fprize'
+		}, function(ret, err) {
+
+			if (ret.value.prize == "1") {
+				alert("祝贺您中了一等奖，获得1000元奖金")
+			} else if (ret.value.prize == "2") {
+				alert("祝贺您中了二等奖，获得100元奖金")
+			} else if (ret.value.prize == "3") {
+				alert("祝贺您中了三等奖，获得10元奖金")
+			} else {
+				alert("很可惜您没中奖，再抽一次试试")
+			}
+		});
+
+		api.addEventListener({
+			name: 'fraffle'
+		}, function(ret, err) {
+			raffletest('fprize')
+		});
+
+		// api.addEventListener({
+		// 	name: 'finfo'
+		// }, function(ret, err) {
+		// 	oopenfrm('info_frm', 0, 'auto');
+		// });
+
+
+
+		//==============================================================================
+		//======================================加密=============================================
+
+		api.addEventListener({
+			name: 'sigclick'
+		}, function(ret, err) {
+			// zzyalert('fid',fmid);
+			pp1 = (ret.value.usn + ret.value.psw);
+			if (fmid == 0) {
+				// zzyalert('111',fmid);
+				fsha1(api.deviceId, sss);
+				zzygetsend('sigcc', 'sig', {
+					'cc': sss.name
+				})
+			} else {
+				// zzyalert('222',fmid);
+				zzysend('ppl0')
+			}
+
+
+
+			// zzysend('ppl',ftdata)
+		});
+
+
+		api.addEventListener({
+			name: 'sigcc'
+		}, function(ret, err) {
+
+			if (ret.value.key.length == 0) {
+
+				var ras = Math.random().toString(36).substr(2);
+				fmid = ras;
+				var fff = {}
+				fmd5(api.deviceId, fff);
+
+				zzysave('saa', 'sig', {
+					'cc': sss.name,
+					'dd': ras,
+					'fff': fff.name,
+				});
+
+			} else {
+
+				fmid = ret.value.key[0].dd;
+
+			};
+			zzysend('ppl0')
+
+
+		});
+
+		api.addEventListener({
+			name: 'ppl0'
+		}, function(ret, err) {
+
+			fmd5(api.deviceId, sss);
+			//+ sss.name + fmid
+
+
+			pp = (pp1 + sss.name + fmid);
+			// zzyalert('111',pp1);
+			//  zzyalert('222',pp);
+
+			zzysend('ppl1')
+		});
+
+		api.addEventListener({
+			name: 'ppl1'
+		}, function(ret, err) {
+
+			pplen = (pp.length - 1);
+			// zzyalert("1pplen",pplen)
+			if (pplen < 180) {
+				pp = pp + pp.substr(parseInt(pp.substr(jj + 3, 1), 36), (parseInt(pp.substr((pplen - 1), 1), 36) + 1));
+				zzysend('ppl1');
+				//  zzyalert('pp0',parseInt(pp.substr((pplen - 1), 1), 36));
+				jj += 1
+
+			} else {
+				s.length = 0;
+				zzysend('ppl2')
+			}
+		});
+		api.addEventListener({
+			name: 'ppl2'
+		}, function(ret, err) {
+			// zzyalert('333',parseInt(pp.substr(0, 1), 36)+"+"+pplen);
+			if (parseInt(pp.substr(0, 1), 36) < pplen && pplen > 0) {
+				s[ii] = pp.substring(1, (parseInt(pp.substr(0, 1), 36) + 2));
+				// zzyalert('pp',pp);
+				pp = pp.substring((parseInt(pp.substr(0, 1), 36) + 1), (pplen));
+
+
+				// jj += (parseInt(pp.substr(jj, 1), 36) + 1);
+				pplen = (pp.length - 1)
+
+				ii += 1;
+				// zzyalert('2',s);
+				zzysend('ppl2')
+			} else {
+
+
+				(function() {
+					//zzyalert("s", s);
+					var slen = s.length
+					fmd5(s[0], sss);
+					mpsd1 = sss.name;
+
+					for (var i = 1; i < (slen - 1); i++) {
+						// zzyalert("si",i+"+"+s[i]);
+						fmd5(s[i], sss);
+						// zzyalert('sss', sss.name);
+
+						if (parseInt(sss.name.substr(0, 1), 36) > parseInt(sss.name.substr((s[i].length - 1), 1), 36)) {
+							mpsd1 = mpsd1 + sss.name
+
+						} else {
+							mpsd1 = sss.name + mpsd1
+						}
+
+					};
+
+				})();
+				fsha1(mpsd1, sss);
+				// zzyalert('333',mpsd1);
+				mpsd1 = sss.name
+				mpsd11 = mpsd1.split('').splice(6, 30);
+				fsha1(mpsd1, sss);
+				mpsd22 = mpsd1.split('').splice(2, 30);
+				fmd5(mpsd1, sss);
+				mpsd33 = mpsd1.split('').splice(1, 30);
+				// zzyalert('mpsd33',mpsd33[29])
+				for (var i = 0; i < 15; i++) {
+
+					mpsd00[i] = mpsd11[i] + mpsd22[i] + mpsd33[29 - i] + mpsd33[30 - 15 - i] + mpsd11[i + 15] + mpsd22[i + 15];
+					// zzyalert("00",i+"+"+mpsd00[i]);
+				};
+				mpsd99 = mpsd00[0];
+				for (var i = 1; i < 15; i++) {
+
+					mpsd99 = mpsd99 + mpsd00[i]
+				};
+
+
+				mpsd = mpsd99.substr(fsigno, fsigno)
+					//zzyalert('ml', mpsd99)
+				jj = 0;
+				ii = 0;
+				mpsd00.length = 0;
+				mpsd11.length = 0;
+				mpsd22.length = 0;
+				mpsd33.length = 0;
+				mpsd1 = 0;
+				mpsd2 = 0;
+				mpsd3 = 0;
+
+
+				zzysend('fclick', ftdata);
+
+			}
+
+		});
+
+
+
+
+
+		//===================================================================================================================================================
+
+
+		zzysend('start', "aa");
+
+
+
+
+	};
+
+	function fwleft() {
+		zzysend('oreturn')
+	};
+
+	function ffwadd() {
+		if (fzzylist == "flock") {
+			zzysend('addlock',{'key':'1'})
+		}
+	};
+
+	// function ffwadd() {
+	// 	// zzyalert('fwaddd',fwadd);
+	// 	zzysend('fwadd', '11')
+	// }
+	var mpsd00 = new Array;
+	var fsigno = 8
+	var fmid = 0
+	var mpsd = "PASSWORD";
+	var test = 0;
+	var fwadd = false;
+	//  ad = "click";
+	var undefined = undefined;
+	var ftdata = {};
+	var fdata = new Array;
+	//  fclick = faa.id;
+	var aaobj = new Array;
+	// var test0 = 0;
+	var sss = {}
+	var test1 = 0;
+	var test2 = 0;
+	var feditor = 0;
+	var findex = 0
+	var tid1 = 0;
+	var tid0 = 0;
+	var tid10 = 0;
+	var tseq0 = 0;
+	var feditor4 = 0;
+	var fmenu = 0;
+	// var fcaa = 0;
+	var fcindex = 0
+	var fcta = "列表"
+	var fct = [fcta, "打开页面", "打开网页"]
+	var lon = new Array;
+	var sso = [0];
+	var lat = new Array;
+	var ssa = [0];
+	var cmd = new Array;
+	var listobj = new Array;
+	// var idobj = new Array;
+	// var checks = new Array;
+	var index = new Array;
+	// var pro = new Array;
+	//  sequence = faa.pro;
+	var vg = 0;
+	// var caa = new Array;
+	var zczx = new Array;
+	var ladistance = 0;
+	var latimen = new Array;
+	// var latimedd = 0;
+	var latimenx;
+	//  ladistance =0;
+	var lasp = 0;
+	var acxx = 0;
+	var acyx = 0;
+	var aczx = 0;
+	var fspgps = 0;
+	var latimes = 0;
+	var f1time0 = 0;
+	var f2time0 = 0;
+	var f3time0 = 0;
+	var f1timed = 0;
+	var f2timed = 0;
+	var f3timed = 0;
+	var fgpstime = 0;
+	var lac = 0;
+	var ftime2 = 0;
+	var latstate = 0;
+	var fstsignal = 0;
+	var locations = 0;
+	// var tag = 0;
+	var cobj = {};
+	var fno = new Array;
+	var pp;
+	var pplen;
+	var jj = 0;
+	var ii = 0;
+	var s = new Array
+</script>
+
+</html>

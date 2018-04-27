@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>AUI快速完成布局</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/api.css" /> -->
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="../css/aui-zzy.css" /> -->
+
+</head>
+
+<body>
+
+  <div class="aui-content aui-margin-b-15">
+      <ul  id = "ul1" class="aui-list aui-form-list">
+
+      </ul>
+    </div>
+    <div class="aui-content aui-margin-b-15">
+        <ul  id = "ul2" class="aui-list aui-form-list">
+
+        </ul>
+      </div>
+      <div class="aui-content aui-margin-b-15">
+      <ul  id = "ul3" class="aui-list aui-form-list">
+
+      </ul>
+
+  </div>
+  <!-- <div class="aui-content aui-margin-b-15">
+      <ul  class="aui-list aui-form-list">
+        <li class="aui-list-item">
+                      <div class="aui-list-item-inner aui-list-item-center aui-list-item-btn">
+                          <div class="aui-btn aui-btn-info aui-margin-r-5" onclick="fss()">提交</div>
+                          <div class="aui-btn aui-btn-danger aui-margin-l-5">取消</div>
+                      </div>
+                  </li>
+<li class="aui-list-item">
+  <div class="aui-list-item-inner">
+    <div class="aui-list-item-label">
+      ia[0]
+    </div>
+    <div  class="aui-list-item-input">
+      <input type="text">aa
+    </div>
+    <div class="aui-list-item-label">  <div  class="aui-btn aui-btn-outlined aui-btn-default " >
+        提交
+      </div></div>
+
+  </div>
+
+</li>
+
+
+      </ul>
+
+  </div> -->
+
+
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<!-- <script type="text/javascript" src="../script/aui-range.js"></script> -->
+<script type="text/javascript" src="../script/APICloud-rest.js"></script>
+<script type="text/javascript" src="../script/SHA1.js"></script>
+<script type="text/javascript" src="../script/APICloud-rest-SHA1.js"></script>
+
+<!-- <script type="text/javascript" src="../script/aui-dialog.js"></script>
+<script type="text/javascript" src="../script/aui-popup-new.js"></script>
+<script type="text/javascript" src="../script/aui-actionsheet.js"></script>
+<script type="text/javascript" src="../script/zzy.js"></script>
+<script type="text/javascript" src="../script/zepto.min.js"></script>
+<script type="text/javascript" src="../script/vue.min.js"></script> -->
+<script type="text/javascript" src="../script/zzyx.js"></script>
+<script type="text/javascript" src="../script/zNext.js"></script>
+<script type="text/javascript" src="../script/giz.js"></script>
+<script type="text/javascript" src="../script/zzyclass.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+        api.parseTapmode();
+
+  //按钮
+
+    确定 ="btn1";
+
+    /////////////////////////////////////////////////////
+
+
+ a = [
+  // ['键名'          ,'值'     ,   特殊值'  ， 模式'    ],
+     ['appIdv'        ,"dffd3515a9a042d98cff7449993a044e",   'value'  ,'input'   ],
+     ['did'           ,"37hpcfpxXgVCzjX5t5XJGr"          ,   'value'  ,'input'   ],
+     ['mac'           ,"VIRTUAL:SITE"                    ,   'value'  ,'input'   ],
+     ['productkey'    ,'e37437cf19b9437db5d42baffe4936b1',   'value'  ,'input'   ],
+     ['productsecret' ,'7ccb094bb9f64375a4f6deeee718bbe0',   'value'  ,'input'   ],
+     ['datav'         ,{"dd":"open"}                     ,   'value'  ,'input'   ],
+     ];
+
+ b = [
+// ['键名', '模式'    ],
+   ['确定',  'cbtn']
+     ];
+
+api.addEventListener({
+    name: 'svalue'
+}, function(ret, err){
+  a = ret.value.key;
+  zzyhtml('ul1',a);
+  zzyhtml('ul2',b);
+});
+
+fip(a);
+start(a)
+
+
+
+
+
+
+
+  zzysend('listm', "lkii");
+// api.addEventListener({
+//     name: 'fss'
+// }, function(ret, err){
+// zzyalert('b',ret)
+// });
+
+// var jjj = document.getElementById('999');
+
+// zclick('999')
+
+    }
+
+// function fss() {
+// zzyalert('bb',zzyvalue(a))
+//
+// };
+
+
+zdate = {
+  'appId' :'',
+  'did' :'',
+  'mac':'',
+  'productkey' :'',
+  'productsecret' :'',
+  'data' :'',
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+</script>
+
+</html>
