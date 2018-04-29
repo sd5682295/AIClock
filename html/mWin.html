@@ -51,7 +51,6 @@
 	apiready = function() {
 		api.parseTapmode();
 		zzygetadd();
-		zzyalert('aa')
 		// zzytestad();
 		// zzygetidb();
 		zzyodel();
@@ -59,32 +58,32 @@
 api.addEventListener({
     name: 'login_account'
 }, function(ret, err){
-    if( ret ){
-         alert( JSON.stringify( ret ) );
-    }else{
-         alert( JSON.stringify( err ) );
-    }
+  zzysend('post',{
+		'keyword':account.keyword,
+		'name':account.name,
+		'act':'login'
+	})
 });
 
 api.addEventListener({
     name: 'login_account_token'
 }, function(ret, err){
-    if( ret ){
-         alert( JSON.stringify( ret ) );
-    }else{
-         alert( JSON.stringify( err ) );
-    }
+	zzysend('post',{
+		'token':account.token,
+		'name':account.name,
+		'act':'login_token'
+	})
 });
 
 
 api.addEventListener({
     name: 'create_account'
 }, function(ret, err){
-    if( ret ){
-         alert( JSON.stringify( ret ) );
-    }else{
-         alert( JSON.stringify( err ) );
-    }
+	zzysend('post',{
+		'name':account.name,
+		'keyword':account.keyword,
+		'act':'create'
+	})
 });
 
 api.addEventListener({
@@ -100,11 +99,11 @@ api.addEventListener({
 api.addEventListener({
     name: 'correlation_device'
 }, function(ret, err){
-    if( ret ){
-         alert( JSON.stringify( ret ) );
-    }else{
-         alert( JSON.stringify( err ) );
-    }
+	zzysend('post',{
+		'name':account.name,
+		'did':device.id,
+		'act':'correlation'
+	})
 });
 
 
